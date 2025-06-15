@@ -138,6 +138,30 @@
             text-shadow: 0 0 5px rgba(255, 71, 87, 0.5);
         }
         
+        /* Estilos para barras fixas */
+        .chat-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .input-area {
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        
+        .chat-messages-container {
+            overflow-y: auto;
+            flex: 1;
+            padding-bottom: 80px; /* Espaço para a barra de input */
+            padding-top: 60px; /* Espaço para o header */
+        }
+        
+        .message-area {
+            min-height: calc(100vh - 140px); /* Altura total menos header e input */
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 640px) {
             .initial-card {
@@ -159,7 +183,7 @@
             .chat-header {
                 padding: 0.75rem;
             }
-            .chat-messages {
+            .message-area {
                 padding: 0.5rem;
             }
             .input-area {
@@ -231,8 +255,8 @@
     </div>
 
     <!-- Chat Screen -->
-    <div id="chatScreen" class="hidden flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-black">
-        <!-- Chat Header -->
+    <div id="chatScreen" class="hidden flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-black relative">
+        <!-- Chat Header - Agora fixo no topo -->
         <div class="bg-gradient-to-r from-purple-900 to-pink-900 p-3 sm:p-4 flex items-center glow chat-header">
             <button onclick="showInitialScreen()" class="text-white mr-2 transform hover:scale-125 transition">
                 <i class="fas fa-arrow-left"></i>
@@ -261,14 +285,14 @@
         <!-- Progress Bar -->
         <div class="progress-bar w-full"></div>
         
-        <!-- Chat Messages -->
-        <div id="chatMessages" class="flex-1 relative overflow-hidden p-2 sm:p-4" style="height: calc(100vh - 180px);">
-            <div id="messagesContainer" class="absolute bottom-0 left-0 right-0 px-2 sm:px-4 pb-4 space-y-2 sm:space-y-3 chat-messages">
+        <!-- Chat Messages - Área de rolagem -->
+        <div id="chatMessages" class="flex-1 overflow-hidden relative chat-messages-container">
+            <div id="messagesContainer" class="message-area px-2 sm:px-4 space-y-2 sm:space-y-3">
                 <!-- Messages will be added here by JavaScript -->
             </div>
         </div>
         
-        <!-- Input Area -->
+        <!-- Input Area - Agora fixo na base -->
         <div class="p-2 sm:p-3 bg-gray-800 border-t border-gray-700 input-area">
             <div id="inputArea" class="flex items-center">
                 <input type="text" id="userInput" placeholder="Digite sua mensagem..." 
@@ -462,12 +486,14 @@
         });
         
         function adjustChatHeight() {
-            const headerHeight = document.querySelector('.chat-header').offsetHeight;
-            const inputHeight = document.querySelector('.input-area').offsetHeight;
-            const progressHeight = document.querySelector('.progress-bar').offsetHeight;
+            const headerHeight = document.querySelector('.chat-header')?.offsetHeight || 60;
+            const inputHeight = document.querySelector('.input-area')?.offsetHeight || 80;
+            const progressHeight = document.querySelector('.progress-bar')?.offsetHeight || 4;
             const chatMessages = document.getElementById('chatMessages');
             
-            chatMessages.style.height = `calc(100vh - ${headerHeight + inputHeight + progressHeight}px)`;
+            if (chatMessages) {
+                chatMessages.style.height = `calc(100vh - ${headerHeight + inputHeight + progressHeight}px)`;
+            }
         }
         
         function startCountdown() {
@@ -532,6 +558,7 @@
                         if (step.showPayment) {
                             document.getElementById('inputArea').classList.add('hidden');
                             document.getElementById('paymentSection').classList.remove('hidden');
+                            adjustChatHeight();
                         }
                         
                         currentStep++;
@@ -554,6 +581,7 @@
                     if (step.showPayment) {
                         document.getElementById('inputArea').classList.add('hidden');
                         document.getElementById('paymentSection').classList.remove('hidden');
+                        adjustChatHeight();
                     }
                     
                     currentStep++;
@@ -583,7 +611,7 @@
                 </div>
             `;
             chatMessages.appendChild(typingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            scrollToBottom();
         }
         
         // Remove typing indicator
@@ -611,7 +639,7 @@
                 </div>
             `;
             chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            scrollToBottom();
         }
         
         // Add message to chat
@@ -645,7 +673,15 @@
             }
             
             chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            scrollToBottom();
+        }
+        
+        // Função para rolar automaticamente para baixo
+        function scrollToBottom() {
+            const container = document.getElementById('chatMessages');
+            if (container) {
+                container.scrollTop = container.scrollHeight;
+            }
         }
         
         // Send user message
@@ -681,7 +717,7 @@
         }
         
         // Allow pressing Enter to send message
-        document.getElementById('userInput').addEventListener('keypress', function(e) {
+        document.getElementById('userInput')?.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 sendMessage();
             }
