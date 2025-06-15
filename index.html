@@ -137,23 +137,64 @@
             color: #ff4757;
             text-shadow: 0 0 5px rgba(255, 71, 87, 0.5);
         }
+        
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .initial-card {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .action-buttons button {
+                width: 100%;
+                padding: 0.75rem;
+            }
+            .chat-header {
+                padding: 0.75rem;
+            }
+            .chat-messages {
+                padding: 0.5rem;
+            }
+            .input-area {
+                padding: 0.75rem;
+            }
+            .user-count {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .modal-content {
+                width: 90%;
+                padding: 1rem;
+            }
+            .photo-gallery img {
+                max-height: 200px;
+                object-fit: cover;
+            }
+        }
     </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
     <!-- Initial Screen -->
-    <div id="initialScreen" class="flex flex-col items-center justify-center p-6 flex-grow">
-        <div class="relative w-full max-w-md mb-8 overflow-hidden rounded-2xl glow transform transition-all duration-300 hover:scale-105">
+    <div id="initialScreen" class="flex flex-col items-center justify-center p-4 sm:p-6 flex-grow">
+        <div class="relative w-full max-w-md mb-6 sm:mb-8 overflow-hidden rounded-2xl glow transform transition-all duration-300 hover:scale-105 initial-card">
             <div class="blur-bg absolute inset-0"></div>
-            <div class="relative z-10 p-8 text-center">
-                <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-pink-500 glow mb-4 heartbeat">
+            <div class="relative z-10 p-6 sm:p-8 text-center">
+                <div class="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden border-4 border-pink-500 glow mb-4 heartbeat profile-pic">
                     <img src="https://putmega.com/images/olimpio022-thumbnail-NONE-20240630_204432d5052431614aeea0.th.jpeg" 
                          alt="Larissa" class="w-full h-full object-cover">
                 </div>
-                <h1 class="text-2xl font-bold mb-2 glow-text"> Aninha, 19 anos</h1>
-                <p class="text-lg mb-4">Estou na sua região e quero te conhecer! 💋</p>
+                <h1 class="text-xl sm:text-2xl font-bold mb-2 glow-text"> Aninha, 19 anos</h1>
+                <p class="text-base sm:text-lg mb-4">Estou na sua região e quero te conhecer! 💋</p>
                 
-                <div class="bg-black bg-opacity-50 rounded-lg p-3 mb-6">
-                    <p class="text-white-300 flex items-center justify-center">
+                <div class="bg-black bg-opacity-50 rounded-lg p-3 mb-4 sm:mb-6">
+                    <p class="text-white-300 flex items-center justify-center text-sm sm:text-base">
                         <span class="w-3 h-3 rounded-full bg-green-500 animate-pulse mr-2"></span>
                         Estou online AGORA...
                     </p>
@@ -162,8 +203,8 @@
                     </div>
                 </div>
                 
-                <div class="flex justify-center space-x-4">
-                    <button onclick="showChatScreen()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-full flex items-center transition-all transform hover:scale-105 glow">
+                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 action-buttons">
+                    <button onclick="showChatScreen()" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center transition-all transform hover:scale-105 glow">
                         <i class="fas fa-heart mr-2"></i> SIM, Quero Falar com Ela
                     </button>
                     <button onclick="document.getElementById('exitPopup').classList.remove('hidden')" class="bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-3 px-6 rounded-full transition-all transform hover:scale-95">
@@ -173,17 +214,17 @@
             </div>
         </div>
         
-        <div class="text-center text-gray-400 text-sm mt-4">
-            <div class="flex items-center justify-center mb-2">
-                <div class="flex -space-x-2 mr-2">
-                    <img class="w-8 h-8 rounded-full border-2 border-pink-500" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
-                    <img class="w-8 h-8 rounded-full border-2 border-pink-500" src="https://i.pinimg.com/736x/28/7d/c1/287dc1a7e4b99bda36160e1ed3ef50fb.jpg" alt="">
-                    <img class="w-8 h-8 rounded-full border-2 border-pink-500" src="https://i.pinimg.com/736x/98/43/1a/98431a96f44d5e42094cab4db691901a.jpg" alt="">
+        <div class="text-center text-gray-400 text-xs sm:text-sm mt-4">
+            <div class="flex flex-col sm:flex-row items-center justify-center mb-2 user-count">
+                <div class="flex -space-x-2 mr-0 sm:mr-2 mb-2 sm:mb-0">
+                    <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-pink-500" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                    <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-pink-500" src="https://i.pinimg.com/736x/28/7d/c1/287dc1a7e4b99bda36160e1ed3ef50fb.jpg" alt="">
+                    <img class="w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 border-pink-500" src="https://i.pinimg.com/736x/98/43/1a/98431a96f44d5e42094cab4db691901a.jpg" alt="">
                 </div>
                 <p>+<span id="userCount">1.234</span> pessoas conversando agora</p>
             </div>
-            <div class="bg-gray-800 rounded-full px-4 py-2 inline-block mt-2">
-                <i class="fas fa-shield-alt text-pink-500 mr-2"></i>
+            <div class="bg-gray-800 rounded-full px-3 py-1 sm:px-4 sm:py-2 inline-block mt-2 text-xs sm:text-sm">
+                <i class="fas fa-shield-alt text-pink-500 mr-1 sm:mr-2"></i>
                 <span>Chat 100% seguro e privado</span>
             </div>
         </div>
@@ -192,28 +233,27 @@
     <!-- Chat Screen -->
     <div id="chatScreen" class="hidden flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-black">
         <!-- Chat Header -->
-        <div class="bg-gradient-to-r from-purple-900 to-pink-900 p-4 flex items-center glow">
+        <div class="bg-gradient-to-r from-purple-900 to-pink-900 p-3 sm:p-4 flex items-center glow chat-header">
             <button onclick="showInitialScreen()" class="text-white mr-2 transform hover:scale-125 transition">
                 <i class="fas fa-arrow-left"></i>
             </button>
-            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-pink-500">
+            <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-pink-500">
                 <img src="https://putmega.com/images/olimpio022-thumbnail-NONE-20240630_204432d5052431614aeea0.th.jpeg" 
-                         alt="Larissa" class="w-full h-full object-cover" 
                      alt="Larissa" class="w-full h-full object-cover">
             </div>
             <div class="ml-3">
-                <h2 class="font-bold">Aninha</h2>
+                <h2 class="font-bold text-sm sm:text-base">Aninha</h2>
                 <p class="text-xs flex items-center">
                     <span class="w-2 h-2 rounded-full bg-green-500 mr-1"></span>
                     Online agora
                 </p>
             </div>
-            <div class="ml-auto flex space-x-3">
+            <div class="ml-auto flex space-x-2 sm:space-x-3">
                 <button class="text-white transform hover:scale-125 transition">
-                    <i class="fas fa-phone-alt"></i>
+                    <i class="fas fa-phone-alt text-sm sm:text-base"></i>
                 </button>
                 <button class="text-white transform hover:scale-125 transition">
-                    <i class="fas fa-video"></i>
+                    <i class="fas fa-video text-sm sm:text-base"></i>
                 </button>
             </div>
         </div>
@@ -222,48 +262,48 @@
         <div class="progress-bar w-full"></div>
         
         <!-- Chat Messages -->
-        <div id="chatMessages" class="flex-1 relative overflow-hidden p-4" style="height: calc(100vh - 200px);">
-            <div id="messagesContainer" class="absolute bottom-0 left-0 right-0 px-4 pb-4 space-y-3">
+        <div id="chatMessages" class="flex-1 relative overflow-hidden p-2 sm:p-4" style="height: calc(100vh - 180px);">
+            <div id="messagesContainer" class="absolute bottom-0 left-0 right-0 px-2 sm:px-4 pb-4 space-y-2 sm:space-y-3 chat-messages">
                 <!-- Messages will be added here by JavaScript -->
             </div>
         </div>
         
         <!-- Input Area -->
-        <div class="p-3 bg-gray-800 border-t border-gray-700">
+        <div class="p-2 sm:p-3 bg-gray-800 border-t border-gray-700 input-area">
             <div id="inputArea" class="flex items-center">
                 <input type="text" id="userInput" placeholder="Digite sua mensagem..." 
-                       class="flex-1 bg-gray-700 text-white rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-pink-500">
-                <button onclick="sendMessage()" class="ml-2 w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-red-500 text-white flex items-center justify-center glow transform hover:scale-110 transition">
-                    <i class="fas fa-paper-plane"></i>
+                       class="flex-1 bg-gray-700 text-white rounded-full py-2 px-3 sm:px-4 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-pink-500">
+                <button onclick="sendMessage()" class="ml-2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-pink-500 to-red-500 text-white flex items-center justify-center glow transform hover:scale-110 transition">
+                    <i class="fas fa-paper-plane text-sm sm:text-base"></i>
                 </button>
             </div>
-            <div id="paymentSection" class="hidden mt-4">
-                <div class="bg-gray-800 border border-pink-500 rounded-lg p-4 glow">
-                    <h3 class="text-lg font-bold text-center mb-3">🔒 Desbloquear WhatsApp da Aninha</h3>
-                    <p class="text-sm mb-4 text-center">Por segurança, confirme seu perfil com um Pix de R$19,90. Após isso, receba o WhatsApp da Aninha e continue sem limites.</p>
+            <div id="paymentSection" class="hidden mt-3 sm:mt-4">
+                <div class="bg-gray-800 border border-pink-500 rounded-lg p-3 sm:p-4 glow">
+                    <h3 class="text-base sm:text-lg font-bold text-center mb-2 sm:mb-3">🔒 Desbloquear WhatsApp da Aninha</h3>
+                    <p class="text-xs sm:text-sm mb-3 sm:mb-4 text-center">Por segurança, confirme seu perfil com um Pix de R$19,90. Após isso, receba o WhatsApp da Aninha e continue sem limites.</p>
                     
-                    <div class="flex items-center justify-center mb-4">
-                        <div class="bg-black bg-opacity-50 rounded-lg p-2 mr-2">
-                            <i class="fas fa-lock-open text-pink-500 text-2xl"></i>
+                    <div class="flex items-center justify-center mb-3 sm:mb-4">
+                        <div class="bg-black bg-opacity-50 rounded-lg p-1 sm:p-2 mr-2">
+                            <i class="fas fa-lock-open text-pink-500 text-xl sm:text-2xl"></i>
                         </div>
                         <div class="text-left">
-                            <p class="font-bold">Você receberá:</p>
-                            <p class="text-sm">✔ Meu WhatsApp pessoal</p>
-                            <p class="text-sm">✔ Conteúdos exclusivos</p>
-                            <p class="text-sm">✔ 10 min. Chamada de vídeo </p>
+                            <p class="font-bold text-sm sm:text-base">Você receberá:</p>
+                            <p class="text-xs sm:text-sm">✔ Meu WhatsApp pessoal</p>
+                            <p class="text-xs sm:text-sm">✔ Conteúdos exclusivos</p>
+                            <p class="text-xs sm:text-sm">✔ 10 min. Chamada de vídeo </p>
                         </div>
                     </div>
                     
-                    <button onclick="completePayment()" class="w-full unlock-btn text-white font-bold py-3 px-6 rounded-full flex items-center justify-center transition-all transform hover:scale-105 glow">
+                    <button onclick="completePayment()" class="w-full unlock-btn text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-full flex items-center justify-center transition-all transform hover:scale-105 glow text-sm sm:text-base">
                         💖 Desbloquear Agora - R$19,90
                     </button>
                     
-                    <div class="flex items-center justify-center mt-3">
-                        <img src="https://img.icons8.com/fluent/512/pix.png" class="h-6 mr-2" alt="Pix">
+                    <div class="flex items-center justify-center mt-2 sm:mt-3">
+                        <img src="https://img.icons8.com/fluent/512/pix.png" class="h-5 sm:h-6 mr-1 sm:mr-2" alt="Pix">
                         <span class="text-xs text-gray-400">Pagamento Único via Pix</span>
                     </div>
                 </div>
-                <div class="mt-3 text-center text-xs text-gray-400">
+                <div class="mt-2 sm:mt-3 text-center text-xs text-gray-400">
                     <p>🔒 187 pessoas desbloquearam hoje</p>
                 </div>
             </div>
@@ -272,18 +312,18 @@
 
     <!-- Payment Success Modal -->
     <div id="successModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-        <div class="bg-gradient-to-br from-purple-900 to-pink-900 rounded-xl p-8 max-w-sm w-full mx-4 text-center glow">
-            <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 pulse">
-                <i class="fas fa-check text-white text-3xl"></i>
+        <div class="bg-gradient-to-br from-purple-900 to-pink-900 rounded-xl p-6 sm:p-8 max-w-sm w-full mx-4 text-center glow modal-content">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 pulse">
+                <i class="fas fa-check text-white text-2xl sm:text-3xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-4">Pagamento Confirmado!</h3>
-            <p class="mb-6">Obrigado por confirmar seu perfil. Aqui está o WhatsApp da Larissa:</p>
-            <div class="bg-black bg-opacity-50 rounded-lg p-4 mb-6">
-                <p class="text-xl font-mono">(21) 98765-4321</p>
+            <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Pagamento Confirmado!</h3>
+            <p class="mb-4 sm:mb-6 text-sm sm:text-base">Obrigado por confirmar seu perfil. Aqui está o WhatsApp da Larissa:</p>
+            <div class="bg-black bg-opacity-50 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+                <p class="text-lg sm:text-xl font-mono">(21) 98765-4321</p>
             </div>
             
-            <div class="mb-6">
-                <p class="text-sm mb-2">Ela já foi notificada sobre você! 🎉</p>
+            <div class="mb-4 sm:mb-6">
+                <p class="text-xs sm:text-sm mb-2">Ela já foi notificada sobre você! 🎉</p>
                 <div class="photo-gallery">
                     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="Larissa 1">
                     <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e" alt="Larissa 2">
@@ -291,7 +331,28 @@
                 </div>
             </div>
             
-            <button onclick="closeModal()" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-6 rounded-full transform hover:scale-105 transition">
+            <button onclick="closeModal()" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 sm:px-6 rounded-full transform hover:scale-105 transition text-sm sm:text-base">
+                Fechar
+            </button>
+        </div>
+    </div>
+
+    <!-- Exit Confirmation Popup -->
+    <div id="exitPopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gradient-to-br from-purple-900 to-pink-900 rounded-xl p-4 sm:p-6 max-w-sm w-full mx-4 text-center glow modal-content">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 pulse">
+                <i class="fas fa-heart-broken text-white text-xl sm:text-2xl"></i>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Tem certeza que vai sair agora?</h3>
+            <p class="mb-4 sm:mb-6 text-sm sm:text-base">Antes de desistir, entra no meu grupo secreto no Telegram e descobre o que está perdendo 🔥</p>
+            
+            <button onclick="window.location.href='https://t.me/+PBox6U7tZs5iOGQ5'" 
+                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-full flex items-center justify-center transition-all transform hover:scale-105 glow mb-2 sm:mb-3 text-sm sm:text-base">
+                <i class="fab fa-telegram mr-1 sm:mr-2"></i> Entrar no Grupo
+            </button>
+            
+            <button onclick="document.getElementById('exitPopup').classList.add('hidden')" 
+                    class="w-full bg-gray-700 hover:bg-gray-600 text-gray-300 font-bold py-2 sm:py-3 px-4 sm:px-6 rounded-full transition-all transform hover:scale-95 text-sm sm:text-base">
                 Fechar
             </button>
         </div>
@@ -310,7 +371,6 @@
                 sender: 'larissa', 
                 message: 'Já te aviso: aqui no privado eu sou bem mais ousada...',
                 delay: 2000,
-            
                 typing: true
             },
             { 
@@ -395,7 +455,20 @@
             
             // Start countdown timer
             startCountdown();
+            
+            // Adjust chat container height on resize
+            window.addEventListener('resize', adjustChatHeight);
+            adjustChatHeight();
         });
+        
+        function adjustChatHeight() {
+            const headerHeight = document.querySelector('.chat-header').offsetHeight;
+            const inputHeight = document.querySelector('.input-area').offsetHeight;
+            const progressHeight = document.querySelector('.progress-bar').offsetHeight;
+            const chatMessages = document.getElementById('chatMessages');
+            
+            chatMessages.style.height = `calc(100vh - ${headerHeight + inputHeight + progressHeight}px)`;
+        }
         
         function startCountdown() {
             let minutes = 1;
@@ -422,7 +495,7 @@
         function showInitialScreen() {
             document.getElementById('initialScreen').classList.remove('hidden');
             document.getElementById('chatScreen').classList.add('hidden');
-            document.getElementById('chatMessages').innerHTML = '';
+            document.getElementById('messagesContainer').innerHTML = '';
             document.getElementById('inputArea').classList.remove('hidden');
             document.getElementById('paymentSection').classList.add('hidden');
             currentStep = 0;
@@ -435,6 +508,7 @@
             document.getElementById('initialScreen').classList.add('hidden');
             document.getElementById('chatScreen').classList.remove('hidden');
             clearInterval(countdownInterval);
+            adjustChatHeight();
             
             // Start chat flow
             setTimeout(() => {
@@ -495,10 +569,10 @@
         function showTypingIndicator() {
             const chatMessages = document.getElementById('messagesContainer');
             const typingDiv = document.createElement('div');
-            typingDiv.className = 'flex items-start mb-3';
+            typingDiv.className = 'flex items-start mb-2 sm:mb-3';
             typingDiv.id = 'typingIndicator';
             typingDiv.innerHTML = `
-                <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden mr-2">
+                <div class="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden mr-2">
                     <img src="https://putmega.com/images/olimpio022-thumbnail-NONE-20240630_204432d5052431614aeea0.th.jpeg" 
                          alt="Larissa" class="w-full h-full object-cover">
                 </div>
@@ -509,7 +583,6 @@
                 </div>
             `;
             chatMessages.appendChild(typingDiv);
-            // Auto-scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
@@ -527,18 +600,17 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = 'flex items-start';
             messageDiv.innerHTML = `
-                <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden mr-2">
+                <div class="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden mr-2">
                     <img src="https://putmega.com/images/olimpio022-thumbnail-NONE-20240630_204432d5052431614aeea0.th.jpeg" 
                          alt="Larissa" class="w-full h-full object-cover">
                 </div>
-                <div class="bg-purple-900 text-white chat-bubble left px-4 py-2">
+                <div class="bg-purple-900 text-white chat-bubble left px-3 sm:px-4 py-1 sm:py-2">
                     <div class="photo-gallery">
                         ${photos.map(photo => `<img src="${photo}" alt="Foto da Larissa">`).join('')}
                     </div>
                 </div>
             `;
             chatMessages.appendChild(messageDiv);
-            // Auto-scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
@@ -550,30 +622,29 @@
             if (sender === 'larissa') {
                 messageDiv.className = 'flex items-start';
                 messageDiv.innerHTML = `
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden mr-2">
+                    <div class="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden mr-2">
                         <img src="https://putmega.com/images/olimpio022-thumbnail-NONE-20240630_204432d5052431614aeea0.th.jpeg" 
                              alt="Larissa" class="w-full h-full object-cover">
                     </div>
-                    <div class="bg-purple-900 text-white chat-bubble left px-4 py-2">
+                    <div class="bg-purple-900 text-white chat-bubble left px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base">
                         ${message}
                     </div>
                 `;
             } else {
                 messageDiv.className = 'flex items-start justify-end';
                 messageDiv.innerHTML = `
-                    <div class="bg-gradient-to-r from-pink-700 to-purple-700 text-white chat-bubble right px-4 py-2">
+                    <div class="bg-gradient-to-r from-pink-700 to-purple-700 text-white chat-bubble right px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base">
                         ${message}
                     </div>
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden ml-2">
+                    <div class="flex-shrink-0 w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden ml-2">
                         <div class="w-full h-full bg-gray-600 flex items-center justify-center">
-                            <i class="fas fa-user text-white"></i>
+                            <i class="fas fa-user text-white text-xs sm:text-sm"></i>
                         </div>
                     </div>
                 `;
             }
             
             chatMessages.appendChild(messageDiv);
-            // Auto-scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
@@ -600,11 +671,9 @@
         
         // Complete payment
         function completePayment() {
-    // Redireciona imediatamente
-    window.location.href = "https://global.tribopay.com.br/8ecvgcdvlf"; // SUBSTITUA POR SEU LINK REAL
-    
-   
-}
+            // Redireciona imediatamente
+            window.location.href = "https://global.tribopay.com.br/8ecvgcdvlf"; // SUBSTITUA POR SEU LINK REAL
+        }
         
         // Close modal
         function closeModal() {
@@ -618,19 +687,5 @@
             }
         });
     </script>
-
-    <!-- Exit Confirmation Popup -->
-    <div id="exitPopup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-        <div class="bg-gradient-to-br from-purple-900 to-pink-900 rounded-xl p-6 max-w-sm w-full mx-4 text-center glow">
-            <h3 class="text-xl font-bold mb-4">Tem certeza que vai sair agora?</h3>
-            <p class="mb-6">Antes de desistir, entra no meu grupo secreto no Telegram e descobre o que está perdendo 🔥</p>
-            
-            <button onclick="window.location.href='https://t.me/+PBox6U7tZs5iOGQ5'" 
-                    class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center transition-all transform hover:scale-105 glow mb-3">
-                <i class="fab fa-telegram mr-2"></i> Entrar no Grupo
-            </button>
-            
-        </div>
-    </div>
 </body>
 </html>
