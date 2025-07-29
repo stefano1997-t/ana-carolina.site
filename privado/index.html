@@ -1,173 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Convite VIP Liberado</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #0e0e0e;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .popup-container {
-      max-width: 450px;
-      width: 100%;
-      background: linear-gradient(145deg, #ffffff, #f0f0f0);
-      border-radius: 18px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-      overflow: hidden;
-      animation: fadeIn 0.15s ease-in-out;
-    }
-
-    .popup-header {
-      background: linear-gradient(135deg, #0088cc, #005f8c);
-      color: white;
-      text-align: center;
-      padding: 25px 20px;
-    }
-
-    .popup-header h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .popup-header p {
-      font-size: 14px;
-      opacity: 0.9;
-    }
-
-    .popup-content {
-      padding: 25px 20px;
-    }
-
-    .popup-content p {
-      font-size: 14px;
-      color: #444;
-      margin-bottom: 20px;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .benefit-item {
-      display: flex;
-      align-items: center;
-      background: #f9f9f9;
-      margin-bottom: 12px;
-      padding: 12px 15px;
-      border-radius: 10px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    .benefit-item i {
-      font-size: 18px;
-      color: #0088cc;
-      margin-right: 12px;
-      min-width: 24px;
-      text-align: center;
-    }
-
-    .telegram-btn {
-      display: block;
-      background: linear-gradient(135deg, #0088cc, #005f8c);
-      color: white;
-      text-align: center;
-      padding: 14px;
-      border-radius: 10px;
-      font-weight: 600;
-      text-decoration: none;
-      margin: 25px auto;
-      box-shadow: 0 5px 20px rgba(0, 136, 204, 0.3);
-      transition: 0.3s ease-in-out;
-    }
-
-    .telegram-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
-    }
-
-    .timer {
-      text-align: center;
-      font-size: 13px;
-      color: #777;
-      margin-top: 10px;
-    }
-
-    .copy-link {
-      font-size: 11px;
-      color: #888;
-      text-align: center;
-      margin-top: 12px;
-      word-break: break-word;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Que Você Procura Está Aqui</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f0e17;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .seductive-gradient {
+            background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 50%, #a4133c 100%);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(255, 77, 109, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 77, 109, 0);
+            }
+        }
+        
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite both;
+        }
+        
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+            70% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .loading-bar {
+            width: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff4d6d, #ff758f);
+            transition: width 3s linear;
+        }
+    </style>
 </head>
 <body>
-
-  <div class="popup-container">
-    <div class="popup-header">
-      <h2>🎁 Convite VIP Liberado!</h2>
-      <p>Você tem acesso antecipado ao grupo privado</p>
+    <!-- Main Page -->
+    <div id="mainPage" class="min-h-screen flex flex-col items-center justify-center seductive-gradient relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+            <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-pink-500 mix-blend-overlay blur-xl"></div>
+            <div class="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-red-500 mix-blend-overlay blur-xl"></div>
+            <div class="absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-purple-500 mix-blend-overlay blur-xl"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6 max-w-4xl">
+            <h1 class="title-font text-4xl md:text-6xl font-bold mb-6 text-white tracking-tight">
+                O QUE VOCÊ PROCURA <span class="text-pink-200">ESTÁ AQUI</span> <span class="text-3xl md:text-5xl">👇</span>
+            </h1>
+            
+            
+            
+            <button id="ctaButton" class="heartbeat px-10 py-4 bg-black text-white rounded-full text-lg font-semibold uppercase tracking-wider transform transition-all hover:scale-105 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 shadow-xl">
+                <span class="mr-2">CLIQUE AQUI</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+        
+        <div class="absolute bottom-6 left-0 right-0 text-center text-pink-200 text-sm opacity-70">
+            <p>Você deve ter +18 anos para continuar</p>
+        </div>
     </div>
-
-    <div class="popup-content">
-      <p>
-        Uma seleção limitada de pessoas foi convidada para acessar um grupo exclusivo com conteúdos liberados antes do público geral. 
-        Esse convite é temporário e pode sair do ar a qualquer momento.
-      </p>
-
-      <div class="benefit-item"><i class="fas fa-eye"></i> Prévias antes de todo mundo</div>
-      <div class="benefit-item"><i class="fas fa-gift"></i> Bônus surpresa para membros</div>
-      <div class="benefit-item"><i class="fas fa-users"></i> Comunidade restrita e segura</div>
-      <div class="benefit-item"><i class="fas fa-bolt"></i> Conteúdos temporários e relâmpago</div>
-
-      <div class="timer"><i class="fas fa-clock"></i> Redirecionando em <span id="countdown">15</span> segundos...</div>
-
-      <a href="https://t.me/aninhaxzx" class="telegram-btn">
-        <i class="fab fa-telegram-plane"></i> ENTRAR NO GRUPO AGORA
-      </a>
-
-      <div class="copy-link">
-        Caso o botão falhe, copie o link abaixo:<br>
-        <strong>https://t.me/aninhaxzx</strong>
-      </div>
+    
+    <!-- Loading Page (hidden initially) -->
+    <div id="loadingPage" class="min-h-screen flex flex-col items-center justify-center bg-black hidden">
+        <div class="text-center max-w-md px-6">
+            <div class="heartbeat mb-8">
+                <i class="fas fa-heart text-6xl text-pink-600"></i>
+            </div>
+            
+            <h2 class="title-font text-3xl font-bold mb-4 text-white">
+                Aprecie com moderação 😏 
+            </h2>
+            
+            <div class="w-full bg-gray-800 rounded-full h-2 mb-6">
+                <div id="progressBar" class="loading-bar rounded-full"></div>
+            </div>
+            
+            <p class="text-xs text-gray-500">
+                Você será redirecionado automaticamente em <span id="countdown">3</span> segundos
+            </p>
+        </div>
     </div>
-  </div>
-
-  <script>
-    let seconds = 35;
-    const countdownElement = document.getElementById('countdown');
-    const targetURL = "https://t.me/aninhaxzx";
-
-    const countdown = setInterval(() => {
-      seconds--;
-      countdownElement.textContent = seconds;
-      if (seconds <= 0) {
-        clearInterval(countdown);
-        window.location.href = targetURL;
-      }
-    }, 1000);
-  </script>
-
+    
+    <script>
+        // Main page button click handler
+        document.getElementById('ctaButton').addEventListener('click', function() {
+            // Hide main page
+            document.getElementById('mainPage').classList.add('hidden');
+            
+            // Show loading page
+            document.getElementById('loadingPage').classList.remove('hidden');
+            
+            // Start progress bar animation
+            document.getElementById('progressBar').style.width = '100%';
+            
+            // Start countdown
+            let seconds = 3;
+            const countdownElement = document.getElementById('countdown');
+            const countdownInterval = setInterval(() => {
+                seconds--;
+                countdownElement.textContent = seconds;
+                
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    // Replace with your actual checkout link
+                    window.location.href = 'https://global.tribopay.com.br/8ecvgcdvlf';
+                }
+            }, 1000);
+        });
+        
+        // Add some interactive effects
+        const ctaButton = document.getElementById('ctaButton');
+        
+        ctaButton.addEventListener('mouseenter', () => {
+            ctaButton.classList.add('shadow-lg');
+            ctaButton.classList.remove('shadow-xl');
+        });
+        
+        ctaButton.addEventListener('mouseleave', () => {
+            ctaButton.classList.remove('shadow-lg');
+            ctaButton.classList.add('shadow-xl');
+        });
+    </script>
 </body>
 </html>
